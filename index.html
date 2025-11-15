@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FIANZ MOD STORE</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Roboto+Mono&display=swap');
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#000; color:#0f0; font-family:'Roboto Mono',monospace; padding:20px; min-height:100vh; position:relative; }
+    .header { text-align:center; margin:30px 0; }
+    h1 { font-family:'Orbitron',sans-serif; font-size:2.2rem; color:#0f0; text-shadow:0 0 20px #0f0; }
+    .subtitle { color:#0ff; font-size:0.9rem; margin-top:8px; }
+    .container { max-width:600px; margin:0 auto; padding-bottom:60px; }
+
+    .login-box {
+      position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+      background:rgba(0,20,0,0.95); border:3px solid #0f0; border-radius:15px;
+      padding:25px; width:90%; max-width:400px; box-shadow:0 0 30px #0f0; z-index:1000;
+      text-align:center; display:none;
+    }
+    .login-input { width:100%; padding:12px; background:#111; color:#0f0; border:1px solid #0f0; border-radius:8px; margin:10px 0; font-size:1rem; }
+    .login-btn { background:#0f0; color:#000; border:none; padding:12px; border-radius:8px; font-weight:bold; cursor:pointer; width:100%; margin-top:10px; }
+    .login-btn:hover { background:#0c0; }
+
+    .coin-box { position:fixed; top:10px; right:10px; background:rgba(0,20,0,0.9); border:1px solid #0f0; border-radius:20px; padding:4px 8px; font-size:0.75rem; font-weight:bold; color:#0ff; box-shadow:0 0 10px #0f0; z-index:999; display:flex; align-items:center; gap:4px; }
+    .coin-icon { font-size:0.9rem; }
+    .logout { position:fixed; top:10px; left:10px; font-size:0.75rem; color:#0ff; cursor:pointer; text-decoration:underline; z-index:998; }
+
+    .app { background:rgba(0,20,0,0.8); border:2px solid #0f0; border-radius:10px; padding:12px; margin:12px 0; box-shadow:0 0 12px #0f0; }
+    .app h3 { color:#0ff; font-weight:bold; margin-bottom:6px; font-size:0.95rem; }
+    .download { display:block; background:#0f0; color:#000; text-align:center; padding:10px; border-radius:6px; font-weight:bold; text-decoration:none; margin-top:8px; font-size:0.85rem; cursor:pointer; }
+    .download:hover { background:#0c0; transform:scale(1.02); }
+    .download.disabled { background:#333; color:#666; cursor:not-allowed; }
+
+    .notif { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#f00; color:#fff; padding:15px 25px; border-radius:12px; font-weight:bold; box-shadow:0 0 25px #f00; z-index:1000; display:none; text-align:center; font-size:0.9rem; }
+    .footer { text-align:center; margin:30px 0; color:#0a0; font-size:0.7rem; }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN BOX -->
+<div class="login-box" id="login-box">
+  <h2>LOGIN AKUN</h2>
+  <p style="margin:10px 0; color:#0ff;">Username: <b>123</b><br>Password: <b>123</b></p>
+  <input type="text" class="login-input" id="username" placeholder="Username" />
+  <input type="password" class="login-input" id="password" placeholder="Password" />
+  <button class="login-btn" onclick="login()">MASUK</button>
+</div>
+
+<!-- LOGOUT -->
+<div class="logout" id="logout" onclick="logout()">Logout</div>
+
+<!-- COIN BOX -->
+<div class="coin-box">
+  <span class="coin-icon">Coin</span>
+  <span id="coin-count">3</span>
+</div>
+
+<!-- NOTIF -->
+<div class="notif" id="notif">Coin habis selamanya!</div>
+
+<div class="header">
+  <h1>FIANZ MOD STORE</h1>
+  <p class="subtitle">1 Coin = 1 Download | Akun: 123</p>
+</div>
+
+<div class="container">
+  <!-- FULL SEMUA APK LU -->
+  <div class="app"><h3>ALIGHTMOTION PREMIUM</h3><a href="https://www.mediafire.com/file/fk0z4gimiw7dzmc/Alight_Motion_Premium_by_Fianz.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>YOUTUBE PREMIUM</h3><a href="https://www.mediafire.com/file/9nu3kqo9blp2h59/Youtube_Premium_RVX_v19_16_39_Cli_v5_0_1_Patches_v5_0_3_signed.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>SPOTIFY PREMIUM</h3><a href="https://www.mediafire.com/file/kfm576nt3h7hgnf/SPOTIFY_PREMIUM_by_FianzCrasher.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>TELEGRAM PREMIUM</h3><a href="https://www.mediafire.com/file/qcrh2cr3zncbret/Telegram_Premium_by_Fianz.apk" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>NETFLIX PREMIUM</h3><a href="https://www.mediafire.com/file/fp0oagpc4yjdbtz/Netflix_Premium_by_Fianz.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>MT MANAGER MOD</h3><a href="https://www.mediafire.com/file/fels3jj2hdirlj7/Mt_Manager_%2528BiyuOffc%2529.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>APK PS</h3><a href="https://www.mediafire.com/file/v1pkoc4yckrgcv5/APK_PS_%2528BIYU_STORE%2529.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>APK SUNTIK IG</h3><a href="https://play.google.com/store/apps/details?id=com.fame.plus.follow" class="download" data-cost="1" target="_blank">GOOGLE PLAY</a></div>
+  <div class="app"><h3>APK SUNTIK TIKTOK</h3><a href="https://play.google.com/store/apps/details?id=com.tikfamous.tik.tok.followers.likes.tikfans.reports.free.app" class="download" data-cost="1" target="_blank">GOOGLE PLAY</a></div>
+  <div class="app"><h3>APK PUSH KONTAK</h3><a href="https://www.mediafire.com/file/nblb38pjap3a2fu/Apk%25E2%2580%25A2Push%25E2%2580%25A2Kontak.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>APK AUTO SAVE CONTACT</h3><a href="https://www.mediafire.com/file/6ioyvyb7zwsz3z6/Apk_Auto_Sv_%2528Biyu_Offc%2529.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>APK ORDER SOSMED</h3><a href="https://www.mediafire.com/file/ti04bah612czb4w/OrderSosmed.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>PUSH KONTAK</h3><a href="https://www.mediafire.com/file/n7eczzt2de1zbuh/push_kontak.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>QR NO KTP</h3><a href="https://www.mediafire.com/file/4es7cs7y6cjzale/qris_no_ktp.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>BANIDO ELIT</h3><a href="https://www.mediafire.com/file/j278olstm7iutmc/BANIDO_ELIT.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>8BP MOOD</h3><a href="https://www.mediafire.com/file/7y8mahv6ysq2hkx/8_BALL_POOL_MOD_V5.14.3_%2528SafefilekU%2529.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>APK BEKU PAYMENT</h3><a href="https://www.mediafire.com/file/4vhnw6ghxhvqcb6/beku_payment.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>BAND EMAIL</h3><a href="https://www.mediafire.com/file/u1rgn1c0v3aukwf/BANNED_GMAIL.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>UNBAN/BAN NUMBER</h3><a href="https://www.mediafire.com/file/dilrmfzd96slrf4/BANNED_%2526_UNBANNED_NUMBER.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>GCAM (UNTUK UP ORKUT)</h3><a href="https://www.mediafire.com/file/p7l0o1osm54r1qs/GalleryCam_1.3.2_Apkpure.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>E-KTP</h3><a href="https://www.mediafire.com/file/g71sgpbvwn1dzaj/E-KTP_Simulasi_Bikin_KTP_Elektronik_Sendiri_1.0.1_Apkpure.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>FAKE NOTIF OVO</h3><a href="https://www.mediafire.com/file/aackcd0n1y2lwsf/ovo__%2528SFILE.MOBI%2529.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>FAKE NOTIF GO-PAY</h3><a href="https://www.mediafire.com/file/z6b4rf1jgfvqgtc/notifikasi_gopay_%2528SFILE.MOBI%2529_%25281%2529.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>FAKE NOTIF DANA</h3><a href="https://www.mediafire.com/file/xysm6w0zz3m41ko/Notif_Dana_Prank_%2528SFILE.MOBI%2529_%25281%2529.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>NETFLIX MOD</h3><a href="https://www.mediafire.com/file/d840ahf89aqkpda/Netflix-SV1-Tea-Mod-ModCombo.Com.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>PIXELLAB COLLECTOR</h3><a href="https://www.mediafire.com/file/ztt393t7h2z9ct3/Pixellab+Collector.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>PIXELLAB GREEN</h3><a href="https://www.mediafire.com/file/bta3e9hcbf44sti/Pixellab+Green.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>PIXELLAB RED</h3><a href="https://www.mediafire.com/file/nbchq2l1pikqvhv/Pixellab+Red.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>PIXELLAB LIME</h3><a href="https://www.mediafire.com/file/a1fq0l2ok5b5g3q/Pixellab+Lime.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>PIXELLAB ROG BLUE</h3><a href="https://www.mediafire.com/file/hor8nogzphze1e2/Pixellab+Rog+Blue.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>PIXELLAB NEON</h3><a href="https://www.mediafire.com/file/rfu7hsdsiqzikwm/Pixellab+Neon.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>PIXELLAB GREY</h3><a href="https://www.mediafire.com/file/pasrnfw2k8f3t4m/Pixellab+Grey.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>PIXELLAB FIRE</h3><a href="https://www.mediafire.com/file/sptx160xc33op7o/Pixellab+Fire.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>PIXELLAB GOLD PREMIUM</h3><a href="https://www.mediafire.com/file/957kz63if53em5q/Pixellab+Gold+Premium.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>APK SUPORT WA</h3><a href="https://www.mediafire.com/file/x1jm6pi30yygmh3/SUPORT_LAPOR_WA_.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>APK QRIS NO KTP</h3><a href="https://www.mediafire.com/file/qhefhyxwwavdn2g/Acis_Pedia_Premium.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>APK SAVE OTOMATIS</h3><a href="https://www.mediafire.com/file/k5rg36s3jvix4up/AutoSvContack.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>APK BLOKIR PAYMENT</h3><a href="https://www.mediafire.com/file/mphbcaxsfbmtz1i/APK_BEKU_PAYMENT.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+  <div class="app"><h3>APK TEMP MAIL</h3><a href="https://www.mediafire.com/file/de03ykicvzr1ett/Temp_Mail_Premium.apk/file" class="download" data-cost="1" target="_blank">DOWNLOAD</a></div>
+</div>
+
+<div class="footer">
+  © 2025 Fianz Mod Store | Coin Anti-Reset | Akun: 123
+</div>
+
+<script>
+// === SISTEM COIN ANTI-RESET + FINGERPRINT ===
+const USERNAME = "123";
+const PASSWORD = "123";
+const DB_NAME = "FianzModStore";
+const STORE_NAME = "user_data";
+let db, fingerprint = null;
+
+function openDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(DB_NAME, 1);
+    request.onupgradeneeded = (e) => {
+      db = e.target.result;
+      db.createObjectStore(STORE_NAME);
+    };
+    request.onsuccess = (e) => { db = e.target.result; resolve(); };
+    request.onerror = reject;
+  });
+}
+
+async function getFingerprint() {
+  if (fingerprint) return fingerprint;
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.fillText('fianzmod', 10, 50);
+  const data = canvas.toDataURL();
+  fingerprint = btoa(data + navigator.userAgent + screen.width + screen.height + navigator.hardwareConcurrency);
+  return fingerprint;
+}
+
+async function saveCoin(coins) {
+  const fp = await getFingerprint();
+  const tx = db.transaction(STORE_NAME, 'readwrite');
+  tx.objectStore(STORE_NAME).put(coins, fp);
+  return tx.complete;
+}
+
+async function loadCoin() {
+  const fp = await getFingerprint();
+  return new Promise((resolve) => {
+    const tx = db.transaction(STORE_NAME);
+    const req = tx.objectStore(STORE_NAME).get(fp);
+    req.onsuccess = () => resolve(req.result ?? 3);
+  });
+}
+
+async function login() {
+  const user = document.getElementById('username').value.trim();
+  const pass = document.getElementById('password').value;
+
+  if (user === USERNAME && pass === PASSWORD) {
+    await openDB();
+    const coins = await loadCoin();
+    localStorage.setItem('fianz_logged', 'true');
+    showMain();
+    updateCoin(coins);
+  } else {
+    alert('Salah! Gunakan: 123 / 123');
+  }
+}
+
+function logout() {
+  if (confirm('Logout?')) {
+    localStorage.removeItem('fianz_logged');
+    location.reload();
+  }
+}
+
+function showMain() {
+  document.getElementById('login-box').style.display = 'none';
+  document.getElementById('logout').style.display = 'block';
+}
+
+(async () => {
+  if (localStorage.getItem('fianz_logged') === 'true') {
+    await openDB();
+    const coins = await loadCoin();
+    showMain();
+    updateCoin(coins);
+  } else {
+    document.getElementById('login-box').style.display = 'block';
+  }
+})();
+
+async function updateCoin(coins) {
+  document.getElementById('coin-count').textContent = coins;
+  await saveCoin(coins);
+  checkDownloads(coins);
+}
+
+function checkDownloads(coins) {
+  document.querySelectorAll('.download').forEach(btn => {
+    if (coins <= 0) {
+      btn.classList.add('disabled');
+      btn.onclick = (e) => { e.preventDefault(); showNotif('Coin habis selamanya!'); };
+    } else {
+      btn.classList.remove('disabled');
+      btn.onclick = null;
+    }
+  });
+}
+
+function showNotif(msg) {
+  const notif = document.getElementById('notif');
+  notif.textContent = msg;
+  notif.style.display = 'block';
+  setTimeout(() => { notif.style.display = 'none'; }, 3000);
+}
+
+document.querySelectorAll('.download').forEach(btn => {
+  btn.addEventListener('click', async function(e) {
+    if (localStorage.getItem('fianz_logged') !== 'true') return;
+    let coins = await loadCoin();
+    if (coins <= 0) {
+      e.preventDefault();
+      showNotif('Coin habis selamanya!');
+      return;
+    }
+    const cost = parseInt(this.dataset.cost) || 1;
+    if (coins >= cost) {
+      coins -= cost;
+      updateCoin(coins);
+    }
+  });
+});
+</script>
+
+</body>
+</html>
